@@ -40,7 +40,13 @@ export class World {
             "molecular layer", color_mtypes.basket_cell, 100, [150, 350-545, 100], 0.5, true
         );
         new CellPositions("src/assets/cereb-circuit/", this.add_points.bind(this), 600, 0.5, [150.0, 350.0, 100.0]);
-
+        // new Shape(
+        //     997,
+        //     "src/assets/meshesMS/decimated_smoothed_mesh_997.obj",
+        //     this.add_mesh.bind(this), null,
+        //     "root", null, 400, [528.0/2, -320.0/2, 456.0/2]
+        // );
+        // new CellPositions("src/assets/mouse-brain/", this.add_points.bind(this));
         this.renderer.setAnimationLoop( this.animate.bind(this) );
         this.eventListener = new EventListener(this.camera, this.renderer);
     }

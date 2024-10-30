@@ -62,12 +62,6 @@ export class EventListener {
         }
     }
 
-    resizeRenderObjects(){
-
-        update_point_sizes();
-        initComposers();
-    }
-
     onWindowResize() {
         this.width  = window.innerWidth - this.offsetLeft * 2;
         this.height = window.innerHeight - this.offsetTop * 2;
