@@ -1,10 +1,30 @@
 # brain-display
 
-This template should help get you started developing with Vue 3 in Vite.
+Query string parameters to toggle specific types' visibility:
 
-## Customize configuration
+| Parameter |
+|--------------|
+|  basket_cell | 
+|  dcn_i |
+|  dcn_p |
+|  io |
+|  glomerulus |
+|  golgi_cell |
+|  granule_cell |
+|  mossy_fibers |
+|  purkinje_cell |
+|  stellate_cell |
+|  ubc_glomerulus |
+|  unipolar_brush_cell |
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Allowed values: *false* or *0* to hide, *true* or *1* to show
+
+Default value, if not sepcified: *true*
+
+Example: in order to hide granule_cell and purkinje_cell: 
+```
+?granule_cell=false&purkinje_cell=false
+```
 
 ## Project Setup
 
