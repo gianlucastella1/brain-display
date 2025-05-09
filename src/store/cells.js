@@ -81,7 +81,7 @@ export class CellPositions {
     this.size = (window.innerHeight / 800.0);
     this.sc = sc;
     this.offset = offset;
-    this.visibility_mtypes = Object.assign({}, default_visibility_mtypes, visibility_mtypes);
+    this.visibility_mtypes = visibility_mtypes;
     this.geometry = null;
     this.mesh = null;
     this.sphere_type = SphereTypes.blended;

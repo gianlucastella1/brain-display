@@ -6,7 +6,7 @@ import { Shape } from "@/store/shape.js";
 
 
 export class World {
-  constructor(p1, p2, p3, p4, p5, mtypes_visibility) {
+  constructor(io_layer, dcn_layer, granular_layer, molecular_layer, purkinje_layer) {
     this.loaded_meshes = {};
     this.points = null;
     this.camera = new Camera(40, window.innerWidth / window.innerHeight, 0.1, 1500);
@@ -19,31 +19,31 @@ export class World {
     this.renderer.sortObjects = true;
     this.updated = false;
 
-    if (p1) {
+    if (io_layer) {
       new Shape(
         -1, null, this.add_mesh.bind(this), [300, 200, 200],
         "io layer", color_mtypes.io, 100, [150.0, 350.0, 100.0], 0.5, true
       );
     }
-    if (p2) {
+    if (dcn_layer) {
       new Shape(
         -2, null, this.add_mesh.bind(this), [300, 200, 200],
         "dcn layer", color_mtypes.dcn_p, 100, [150, 150, 100], 0.5, true
       );
     }
-    if (p3) {
+    if (granular_layer) {
       new Shape(
         -3, null, this.add_mesh.bind(this), [300, 130, 200],
         "granular layer", [0.7, 0.15, 0.15, 1.0], 100, [150, -50, 100], 0.5, true
       );
     }
-    if (p4) {
+    if (dcn_layer) {
       new Shape(
         -4, null, this.add_mesh.bind(this), [300, 15, 200],
         "purkinje layer", color_mtypes.purkinje_cell, 100, [150, 350 - 530, 100], 0.5, true
       );
     }
-    if (p5) {
+    if (molecular_layer) {
       new Shape(
         -5, null, this.add_mesh.bind(this), [300, 150, 200],
         "molecular layer", color_mtypes.basket_cell, 100, [150, 350 - 545, 100], 0.5, true
@@ -57,14 +57,29 @@ export class World {
       10: 'ubc_glomerulus', 11: 'unipolar_brush_cell'
     };
 
-    new CellPositions("src/assets/cereb-circuit/", this.add_points.bind(this), 600, 0.5, [150.0, 350.0, 100.0], mtypes_visibility);
-    // new Shape(
-    //     997,
-    //     "src/assets/meshesMS/decimated_smoothed_mesh_997.obj",
-    //     this.add_mesh.bind(this), null,
-    //     "root", null, 400, [528.0/2, -320.0/2, 456.0/2]
-    // );
-    // new CellPositions("src/assets/mouse-brain/", this.add_points.bind(this));
+    let visibility_mtypes = {
+      basket_cell: purkinje_layer,
+      dcn_i: dcn_layer,
+      dcn_p: dcn_layer,
+      io: io_layer,
+      glomerulus: false,
+      golgi_cell: granular_layer,
+      granule_cell: granular_layer,
+      mossy_fibers: false,
+      purkinje_cell: molecular_layer,
+      stellate_cell: purkinje_layer,
+      ubc_glomerulus: false,
+      unipolar_brush_cell: granular_layer
+    };
+
+    new CellPositions(
+      "src/assets/cereb-circuit/",
+      this.add_points.bind(this),
+      600,
+      0.5,
+      [150.0, 350.0, 100.0],
+      visibility_mtypes);
+
     this.renderer.setAnimationLoop(this.animate.bind(this));
     this.eventListener = new EventListener(this.camera, this.renderer);
   }
@@ -87,10 +102,6 @@ export class World {
     this.points = points;
     this.scene.add(points);
     points.onBeforeRender = function (renderer) { renderer.clearDepth(); };
-  }
-
-  toggleVisibility() {
-    this.points[0];
   }
 
   animate() {
