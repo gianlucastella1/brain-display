@@ -110,7 +110,8 @@ export class CellPositions {
       }
 
       let textured = new Array(vertices_.length / 3).fill(0.5);
-      let ex = new Array(vertices_.length / 3).fill(1);  // visible or not
+      // fill with 0 to avoid initial "white cell" glitch
+      let ex = new Array(vertices_.length / 3).fill(0);  // visible or not
       let size = new Array(vertices_.length / 3).fill(this.size * 10.0);
 
       let caR = new Array(vertices_.length / 3).fill(1.0);
