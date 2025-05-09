@@ -37,7 +37,7 @@ export class World {
         "granular layer", [0.7, 0.15, 0.15, 1.0], 100, [150, -50, 100], 0.5, true
       );
     }
-    if (dcn_layer) {
+    if (purkinje_layer) {
       new Shape(
         -4, null, this.add_mesh.bind(this), [300, 15, 200],
         "purkinje layer", color_mtypes.purkinje_cell, 100, [150, 350 - 530, 100], 0.5, true
@@ -58,7 +58,7 @@ export class World {
     };
 
     let visibility_mtypes = {
-      basket_cell: purkinje_layer,
+      basket_cell: molecular_layer,
       dcn_i: dcn_layer,
       dcn_p: dcn_layer,
       io: io_layer,
@@ -66,14 +66,14 @@ export class World {
       golgi_cell: granular_layer,
       granule_cell: granular_layer,
       mossy_fibers: false,
-      purkinje_cell: molecular_layer,
-      stellate_cell: purkinje_layer,
+      purkinje_cell: purkinje_layer,
+      stellate_cell: molecular_layer,
       ubc_glomerulus: false,
       unipolar_brush_cell: granular_layer
     };
 
     new CellPositions(
-      "src/assets/cereb-circuit/",
+      "data/cereb-circuit/",
       this.add_points.bind(this),
       600,
       0.5,
