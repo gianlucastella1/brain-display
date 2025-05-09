@@ -3,12 +3,12 @@
 import * as THREE from "three";
 
 const loader = new THREE.TextureLoader();
-export let ballimage = loader.load('src/assets/textures/ball.png');
+export let ballimage = loader.load('data/textures/ball.png');
 ballimage.magFilter = THREE.LinearFilter;
 ballimage.minFilter = THREE.LinearFilter;
 ballimage.wrapS = ballimage.wrapT = THREE.RepeatWrapping;
 
-let auraimage = loader.load('src/assets/textures/ballsimple.png');
+let auraimage = loader.load('data/textures/ballsimple.png');
 auraimage.magFilter = THREE.LinearFilter;
 auraimage.minFilter = THREE.LinearFilter;
 auraimage.wrapS = auraimage.wrapT = THREE.RepeatWrapping;

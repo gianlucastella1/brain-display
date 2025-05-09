@@ -1,4 +1,4 @@
-import brain_hierarchy from '@/assets/1.json';
+import brain_hierarchy from '/data/1.json';
 
 class AllenData {
     constructor() {
