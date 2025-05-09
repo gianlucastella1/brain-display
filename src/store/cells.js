@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { PointShader } from "@/store/shaders/PointShader.js";
+
+/* OUT OF SCOPE 
 import { allen_data } from "@/store/allen_atlas.js";
+*/
 
 export let SphereTypes = {
   "sphere": 1,
@@ -178,7 +181,9 @@ export class CellPositions {
   get_color(point) {
     let clr = [0.5, 0.5, 0.5];
     if (this.color_map === Colormaps.regions || this.color_map === Colormaps.orientations) {
+      /* OUT OF SCOPE
       clr = allen_data.color[point] !== undefined ? allen_data.color[point].slice() : [130.0, 130.0, 130.0];
+      */
     }
     else if (this.color_map === Colormaps.types) {
       clr = color_types[id_types[point]] !== undefined ? color_types[id_types[point]].slice() : [0.5, 0.5, 0.5];

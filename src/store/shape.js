@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import {MeshBlendShader} from "@/store/shaders/MeshBlendShader.js";
-import {allen_data} from "@/store/allen_atlas.js";
+/* OUT OF SCOPE
+import { allen_data } from "@/store/allen_atlas.js";
+*/
 import {backgroundIntensity} from "three/tsl";
 
 export class Shape {
@@ -12,15 +14,19 @@ export class Shape {
         if (name !== null){
             this.name = name;
         }
-        else{
+        else {
+          /* OUT OF SCOPE
             this.name = (this.id in allen_data.name) ? allen_data.name[this.id] : "shape";
+            */
         }
 
         if (color !== null){
             this.color = color;
         }
         else{
-            this.color = (this.id in allen_data.color) ? allen_data.color[this.id] : allen_data.color[997];
+          /* OUT OF SCOPE
+          this.color = (this.id in allen_data.color) ? allen_data.color[this.id] : allen_data.color[997];
+          */
         }
         this.offset = offset;
         this.scale = scale;
